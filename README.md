@@ -1,7 +1,9 @@
 # Invoicy
 
-Invoicy is a demo full-stack invoicing application built with Clean Architecture principles using an Angular frontend and ASP.NET Core backend.  
-This is a demonstration project and not intended for production use.
+Invoicy is a full-stack demo invoicing application built with Clean Architecture principles using an Angular frontend and ASP.NET Core backend.  
+This is a demonstration project for learning purposes and not intended for production use.
+
+---
 
 ## Features
 
@@ -13,11 +15,13 @@ This is a demonstration project and not intended for production use.
 - Full validation and error handling
 - Responsive frontend design
 
+---
+
 ## Tech Stack
 
 ### Backend
 
-- ASP.NET Core 8, C#
+- ASP.NET Core 8 (C#)
 - Clean Architecture (Domain, Application, Infrastructure, API layers)
 - Entity Framework Core
 - SQL Server
@@ -26,22 +30,27 @@ This is a demonstration project and not intended for production use.
 
 ### Frontend
 
-- Angular 17 standalone components
+- Angular 17 (Standalone Components)
 - Angular Routing
 - Reactive Forms
 - Toastr for notifications
 - Bootstrap for styling
 
-## Architecture
+---
 
-The solution follows Clean Architecture:
+## Project Structure
+/src
+/Invoicy.Api - ASP.NET Core API (backend entry point)
 
-- **Domain Layer:** Business logic and entities (Customer, Invoice, Address)
-- **Application Layer:** Commands, Queries, Services, DTO mappings, Validators
-- **Infrastructure Layer:** EF Core persistence, Repositories, Migrations
-- **API Layer:** Controllers, REST API endpoints
+/Invoicy.Application - Application layer (commands, queries, services)
 
-The frontend communicates with the backend through a REST API.
+/Invoicy.Domain - Domain layer (entities, business rules)
+
+/Invoicy.Infrastructure - Infrastructure layer (EF Core, repositories)
+
+/invoicy-web - Angular frontend application
+
+---
 
 ## Setup
 
@@ -49,18 +58,23 @@ The frontend communicates with the backend through a REST API.
 
 - ASP.NET Core 8 project using EF Core
 - Run EF Core migrations to create the database schema
+- Update connection string as needed in `appsettings.json`
 
 ### Frontend
 
-- Angular 17 standalone app
-- Run `npm install` and `ng serve` to start the frontend
-
-## Notes
-
-- Full CRUD for customers
-- Invoices can be created and viewed (editing not implemented)
-- Phone number uniqueness is enforced for customer records
+- Navigate to `src/invoicy-web`
+- Run `npm install`
+- Start frontend with `ng serve`
 
 ---
 
-*This project is for demo purposes only and is not a complete production system.*
+## Notes
+
+- Full CRUD operations available for Customers
+- Invoices can be created and viewed (editing not yet implemented)
+- Customer phone number uniqueness enforced
+- Clean Architecture applied across entire solution
+
+---
+
+*This project is for educational and demo purposes only.*
