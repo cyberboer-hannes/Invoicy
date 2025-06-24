@@ -1,0 +1,70 @@
+<div class="container mt-4 mb-4">
+  <h2>{{ isEditMode ? 'Edit Customer' : 'Add New Customer' }}</h2>
+
+  <form [formGroup]="customerForm" (ngSubmit)="onSubmit()" novalidate>
+
+    <!-- Name -->
+    <div class="mb-3">
+      <label>Name</label>
+      <input class="form-control" formControlName="name" />
+      <div *ngIf="customerForm.get('name')?.touched && customerForm.get('name')?.invalid" class="text-danger">
+        Name is required.
+      </div>
+    </div>
+
+    <!-- Telephone -->
+    <div class="mb-3">
+      <label>Telephone Number</label>
+      <input class="form-control" formControlName="telephoneNumber" />
+      <div *ngIf="customerForm.get('telephoneNumber')?.touched && customerForm.get('telephoneNumber')?.invalid" class="text-danger">
+        Telephone Number is required.
+      </div>
+    </div>
+
+    <!-- Address -->
+    <h4>Address</h4>
+    <div formGroupName="address">
+
+      <div class="mb-3">
+        <label>Province</label>
+        <input class="form-control" formControlName="province" />
+        <div *ngIf="customerForm.get('address.province')?.touched && customerForm.get('address.province')?.invalid" class="text-danger">
+          Province is required.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label>City</label>
+        <input class="form-control" formControlName="city" />
+        <div *ngIf="customerForm.get('address.city')?.touched && customerForm.get('address.city')?.invalid" class="text-danger">
+          City is required.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label>Suburb</label>
+        <input class="form-control" formControlName="suburb" />
+        <!-- Suburb is optional, no validation here -->
+      </div>
+
+      <div class="mb-3">
+        <label>Street</label>
+        <input class="form-control" formControlName="street" />
+        <div *ngIf="customerForm.get('address.street')?.touched && customerForm.get('address.street')?.invalid" class="text-danger">
+          Street is required.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label>Zip Code</label>
+        <input class="form-control" formControlName="zipCode" />
+        <div *ngIf="customerForm.get('address.zipCode')?.touched && customerForm.get('address.zipCode')?.invalid" class="text-danger">
+          Zip Code is required.
+        </div>
+      </div>
+
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="customerForm.invalid">Save</button>
+  </form>
+</div>

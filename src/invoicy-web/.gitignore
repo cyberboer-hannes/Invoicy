@@ -1,0 +1,75 @@
+# ---- .NET (backend) ----
+
+## Ignore Visual Studio temporary files, build results, and user-specific files.
+/bin/
+/obj/
+/out/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Logs
+*.log
+
+# Build results
+*.exe
+*.dll
+*.app
+*.db
+
+# Backup & temp files
+*.bak
+*.tmp
+
+# Rider & JetBrains
+.idea/
+
+# ---- Angular (frontend) ----
+
+# Compiled output
+/src/invoicy-web/dist/
+/src/invoicy-web/tmp/
+/src/invoicy-web/out-tsc/
+/src/invoicy-web/bazel-out/
+
+# Node modules
+/src/invoicy-web/node_modules/
+**/node_modules/
+
+# Logs
+npm-debug.log
+yarn-error.log
+
+# Angular cache
+/src/invoicy-web/.angular/cache
+
+# IDEs
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# VS Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Misc
+.sass-cache/
+.connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
+.history/*
+
+# System
+.DS_Store
+Thumbs.db

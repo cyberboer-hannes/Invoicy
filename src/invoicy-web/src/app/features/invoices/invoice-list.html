@@ -1,0 +1,36 @@
+<div class="container">
+  <h2>Invoices</h2>
+
+  <div class="mb-3">
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="searchQuery"
+      (input)="onSearch()"
+      placeholder="Search by Invoice Number or Customer Name"
+    />
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Invoice Number</th>
+        <th>Invoice Date</th>
+        <th>Customer</th>
+        <th>Telephone</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let invoice of filteredInvoices">
+        <td>{{ invoice.invoiceNumber }}</td>
+        <td>{{ invoice.invoiceDate | date: 'yyyy-MM-dd' }}</td>
+        <td>{{ invoice.customer.name }}</td>
+        <td>{{ invoice.customer.telephoneNumber }}</td>
+        <td>
+          <a class="btn btn-sm btn-primary" [routerLink]="['/invoices', invoice.id]">View</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

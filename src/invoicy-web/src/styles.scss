@@ -1,0 +1,24 @@
+/* Make Toastr more prominent */
+.toast-success {
+  background-color: #198754 !important; /* Bootstrap green */
+  color: #fff !important;
+  font-weight: bold;
+}
+
+.toast-warning {
+  background-color: #fd7e14 !important; /* Bootstrap orange */
+  color: #fff !important;
+  font-weight: bold;
+}
+
+.toast-error {
+  background-color: #dc3545 !important; /* Bootstrap red */
+  color: #fff !important;
+  font-weight: bold;
+}
+
+/* Add better spacing */
+.toast-container {
+  margin-left: 20px;
+  margin-right: 20px;
+}

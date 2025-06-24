@@ -1,0 +1,113 @@
+<div class="container mt-3">
+  <h2>Create New Invoice</h2>
+
+  <!-- Customer Section -->
+  <div class="card p-3 mb-4">
+    <h5>Customer Information</h5>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label>Name</label>
+        <input type="text" class="form-control" [(ngModel)]="customerName" (input)="onCustomerSearch()" placeholder="Start typing customer name">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Telephone</label>
+        <input type="text" class="form-control" [(ngModel)]="customerTelephone" (input)="onCustomerSearch()" placeholder="Start typing telephone">
+      </div>
+    </div>
+
+    <!-- Search results -->
+    <div *ngIf="searchResults.length > 0" class="alert alert-info">
+      <strong>Select existing customer:</strong>
+      <ul class="list-group mt-2">
+        <li *ngFor="let customer of searchResults" class="list-group-item list-group-item-action"
+            (click)="selectCustomer(customer)">
+          {{ customer.name }} ({{ customer.telephoneNumber }})
+        </li>
+      </ul>
+    </div>
+
+    <!-- Address -->
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <label>Province</label>
+        <input type="text" class="form-control" [(ngModel)]="customerAddress.province">
+      </div>
+      <div class="col-md-4 mb-3">
+        <label>City</label>
+        <input type="text" class="form-control" [(ngModel)]="customerAddress.city">
+      </div>
+      <div class="col-md-4 mb-3">
+        <label>Suburb</label>
+        <input type="text" class="form-control" [(ngModel)]="customerAddress.suburb">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Street</label>
+        <input type="text" class="form-control" [(ngModel)]="customerAddress.street">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Zip Code</label>
+        <input type="text" class="form-control" [(ngModel)]="customerAddress.zipCode">
+      </div>
+    </div>
+  </div>
+
+  <!-- Invoice Details -->
+  <div class="card p-3 mb-4">
+    <h5>Invoice Details</h5>
+
+    <div class="row">
+      <div class="col-md-5 mb-3">
+        <label>Item Description</label>
+        <input type="text" class="form-control" [(ngModel)]="newDetail.itemDescription">
+      </div>
+      <div class="col-md-3 mb-3">
+        <label>Quantity</label>
+        <input type="number" class="form-control" [(ngModel)]="newDetail.quantity">
+      </div>
+      <div class="col-md-3 mb-3">
+        <label>Unit Price</label>
+        <input type="number" class="form-control" [(ngModel)]="newDetail.unitPrice">
+      </div>
+      <div class="col-md-1 d-flex align-items-end">
+        <button class="btn btn-primary w-100" (click)="addDetail()">Add</button>
+      </div>
+    </div>
+
+    <table class="table table-striped mt-3" *ngIf="invoiceDetails.length > 0">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Qty</th>
+          <th>Unit Price</th>
+          <th>Line Total</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of invoiceDetails; let i = index">
+          <td>{{ item.itemDescription }}</td>
+          <td>{{ item.quantity }}</td>
+          <td>{{ item.unitPrice | currency:'ZAR':'symbol-narrow':'1.2-2' }}</td>
+          <td>{{ (item.quantity * item.unitPrice) | currency:'ZAR':'symbol-narrow':'1.2-2' }}</td>
+          <td>
+            <button class="btn btn-sm btn-warning me-1" (click)="editDetail(i)">Edit</button>
+            <button class="btn btn-sm btn-danger" (click)="removeDetail(i)">Remove</button>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="3" class="text-end">Total:</th>
+          <th>{{ calculateTotal() | currency:'ZAR':'symbol-narrow':'1.2-2' }}</th>
+          <th></th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <!-- Save button -->
+  <div class="text-end">
+    <button class="btn btn-success" (click)="saveInvoice()">Save Invoice</button>
+  </div>
+</div>
